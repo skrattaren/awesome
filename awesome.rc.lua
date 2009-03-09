@@ -217,7 +217,7 @@ end
 
 keybinding({ modkey }, "Left", awful.tag.viewprev):add()
 keybinding({ modkey }, "Right", awful.tag.viewnext):add()
-keybinding({ modkey }, "Escape", awful.tag.history.restore):add()
+keybinding({ modkey }, "Tab", awful.tag.history.restore):add()
 
 -- Standard program
 keybinding({ modkey }, "Return", function () awful.util.spawn(terminal) end):add()
