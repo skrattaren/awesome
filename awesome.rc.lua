@@ -4,6 +4,7 @@ require("beautiful")
 -- Run at startup
 os.execute("urxvtd &")
 os.execute("xneur &")
+os.execute("conky &")
 os.execute("xsetroot -cursor_name arrow &")
 
 -- {{{ Variable definitions
@@ -18,7 +19,7 @@ beautiful.init(theme_path)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc -pe tabbed"
-editor = os.getenv("EDITOR") or "nano"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Set locale
@@ -40,11 +41,11 @@ layouts =
     "tiletop",
     "fairh",
     "fairv",
-    "magnifier",
-    "max",
-    "fullscreen",
-    "spiral",
-    "dwindle",
+--    "magnifier",
+--    "max",
+--    "fullscreen",
+--    "spiral",
+--    "dwindle",
     "floating"
 }
 
@@ -55,11 +56,12 @@ layouts =
 floatapps =
 {
     -- by class
-    ["MPlayer"] = true,
-    ["pinentry"] = true,
-    ["gimp"] = true,
+--    ["MPlayer"] = true,
+--    ["pinentry"] = true,
+--    ["gimp"] = true,
+      ["feh"] = true,
     -- by instance
-    ["mocp"] = true
+--    ["mocp"] = true
 }
 
 -- Applications to be moved to a pre-defined tag by class or instance.
@@ -95,7 +97,9 @@ end
 -- Create a textbox widget
 mytextbox = widget({ type = "textbox", align = "right" })
 -- Set the default text in textbox
-mytextbox.text = "<b><small> " .. AWESOME_RELEASE .. " </small></b>"
+-- mytextbox.text = "<b><small> " .. AWESOME_RELEASE .. " </small></b>"
+-- Set time at awesome startup
+mytextbox.text = " " .. os.date("%a, %d %b | %H:%M") .. " "
 
 -- Create a laucher widget and a main menu
 myawesomemenu = {
@@ -228,6 +232,11 @@ keybinding({ modkey, "Control" }, "r", function ()
                                         end):add()
 keybinding({ modkey, "Shift" }, "q", awesome.quit):add()
 
+-- Run some programs
+-- keybinding({ modkey }, "", function () awful.util.spawn("" end):add()
+keybinding({ modkey }, "o", function () awful.util.spawn("opera -notrayicon") end):add()
+keybinding({ modkey }, "p", function () awful.util.spawn("psi") end):add()
+
 -- Client manipulation
 keybinding({ modkey }, "m", awful.client.maximize):add()
 keybinding({ modkey }, "f", function () if client.focus then client.focus.fullscreen = not client.focus.fullscreen end end):add()
@@ -240,7 +249,7 @@ keybinding({ modkey, "Control" }, "j", function () awful.screen.focus(1) end):ad
 keybinding({ modkey, "Control" }, "k", function () awful.screen.focus(-1) end):add()
 keybinding({ modkey, "Control" }, "space", awful.client.togglefloating):add()
 keybinding({ modkey, "Control" }, "Return", function () if client.focus then client.focus:swap(awful.client.getmaster()) end end):add()
-keybinding({ modkey }, "o", awful.client.movetoscreen):add()
+-- keybinding({ modkey }, "o", awful.client.movetoscreen):add()
 keybinding({ "Mod1" }, "Tab", awful.client.focus.history.previous):add()
 keybinding({ modkey }, "u", awful.client.urgent.jumpto):add()
 keybinding({ modkey, "Shift" }, "r", function () if client.focus then client.focus:redraw() end end):add()
