@@ -45,7 +45,7 @@ layouts =
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
---    awful.layout.suit.max,
+    awful.layout.suit.max,
 --    awful.layout.suit.max.fullscreen,
 --    awful.layout.suit.magnifier,
     awful.layout.suit.floating
@@ -228,9 +228,8 @@ globalkeys =
     key({ modkey, "Control" }, "q", awesome.quit),
 
     -- Run some programs
-    -- keybinding({ modkey }, "", function () awful.util.spawn("" end):add()
-    keybinding({ modkey }, "o", function () awful.util.spawn("opera -notrayicon") end):add()
-    keybinding({ modkey }, "p", function () awful.util.spawn("psi") end):add()
+    key({ modkey,           }, "o",     function () awful.util.spawn("opera -notrayicon") end),
+    key({ modkey,           }, "p",     function () awful.util.spawn("psi") end),
 
     key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -445,6 +444,6 @@ end)
 
 -- Hook called every minute
 awful.hooks.timer.register(60, function ()
-    mytextbox.text = os.date("%a, %d %b | %H:%M")
+    mytextbox.text = os.date(" %a, %d %b | %H:%M ")
 end)
 -- }}}
