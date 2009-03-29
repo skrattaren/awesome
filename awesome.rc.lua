@@ -6,7 +6,7 @@ require("beautiful")
 require("naughty")
 
 -- Run at startup
-os.execute("urxvtd &")
+os.execute("urxvtd -o &")
 -- os.execute("xneur &")
 os.execute("killall conky; conky &")
 os.execute("xsetroot -cursor_name arrow &")
@@ -59,7 +59,7 @@ floatapps =
 {
     -- by class
 --    ["MPlayer"] = true,
---    ["pinentry"] = true,
+      ["pinentry"] = true,
 --    ["gimp"] = true,
       ["feh"] = true,
     -- by instance
