@@ -442,8 +442,8 @@ awful.hooks.arrange.register(function (screen)
     end
 end)
 
--- Hook called every minute
-awful.hooks.timer.register(60, function ()
+-- Hook called every thirteen seconds
+awful.hooks.timer.register(13, function ()
     mytextbox.text = os.date(" %a, %d %b | %H:%M ")
 end)
 -- }}}
