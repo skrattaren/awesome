@@ -269,7 +269,7 @@ globalkeys =
 clientkeys =
 {
     key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    key({ Mod1              }, "F4",      function (c) c:kill()                         end),
     key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
