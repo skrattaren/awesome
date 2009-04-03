@@ -231,6 +231,13 @@ globalkeys =
     key({ modkey,           }, "o",     function () awful.util.spawn("opera -notrayicon") end),
     key({ modkey,           }, "p",     function () awful.util.spawn("psi") end),
 
+    -- MPD Controlling
+    key({   }, "XF86AudioPlay",     function () os.execute("mpc toggle") end),
+    key({   }, "XF86AudioStop",     function () os.execute("mpc stop")   end),
+    key({   }, "XF86AudioPrev",     function () os.execute("mpc prev")   end),
+    key({   }, "XF86AudioNext",     function () os.execute("mpc next")   end),
+    key({   }, "XF86AudioMute",     function () os.execute("echo $EDITOR > /tmp/aw.log") end),
+
     key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
