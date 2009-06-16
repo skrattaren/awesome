@@ -1,3 +1,4 @@
+-- Config for 3.3 branch
 -- Standard awesome library
 require("awful")
 -- Theme handling library
@@ -6,9 +7,6 @@ require("beautiful")
 require("naughty")
 
 -- Run at startup
-os.execute("urxvtd -o &")
--- os.execute("xneur &")
-os.execute("killall conky; conky &")
 os.execute("xsetroot -cursor_name arrow &")
 
 -- {{{ Variable definitions
@@ -67,8 +65,9 @@ floatapps =
 -- Use the screen and tags indices.
 apptags =
 {
-    -- ["Firefox"] = { screen = 1, tag = 2 },
-    -- ["mocp"] = { screen = 2, tag = 4 },
+    ["Opera"] = { screen = 1, tag = 1 },
+    ["psi"] = { screen = 1, tag = 3 },
+--    [""] = { screen = 0, tag = 0 },
 }
 
 -- Define if we want to use titlebar on all applications.
