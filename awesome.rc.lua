@@ -1,13 +1,9 @@
--- Config for 3.3 branch
 -- Standard awesome library
 require("awful")
 -- Theme handling library
 require("beautiful")
 -- Notification library
 require("naughty")
-
--- Run at startup
-os.execute("xsetroot -cursor_name arrow &")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -23,6 +19,9 @@ beautiful.init(theme_path)
 terminal = "urxvtc -pe tabbed"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+
+-- Set locale
+os.setlocale(os.getenv("LANG"))
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -54,11 +53,10 @@ floatapps =
 {
     -- by class
     ["MPlayer"] = true,
---    ["pinentry"] = true,
---    ["gimp"] = true,
-    ["feh"] = true,
+--  ["pinentry"] = true,
+    ["gimp"] = true,
     -- by instance
---    ["mocp"] = true
+--  ["mocp"] = true
 }
 
 -- Applications to be moved to a pre-defined tag by class or instance.
@@ -67,7 +65,7 @@ apptags =
 {
     ["Opera"] = { screen = 1, tag = 1 },
     ["psi"] = { screen = 1, tag = 3 },
---    [""] = { screen = 0, tag = 0 },
+    -- ["mocp"] = { screen = 2, tag = 4 },
 }
 
 -- Define if we want to use titlebar on all applications.
@@ -214,8 +212,6 @@ globalkeys = awful.util.table.join(
             if client.focus then client.focus:raise() end
         end),
     awful.key({ modkey,           }, "w", function () mymainmenu:show(true)        end),
-
-    -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1) end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1) end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus( 1)       end),
@@ -229,22 +225,21 @@ globalkeys = awful.util.table.join(
             end
         end),
 
-    -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control"   }, "q", awesome.quit),
 
-    -- Run some programs
-    key({ modkey,           }, "o",     function () awful.util.spawn("opera -notrayicon") end),
-    key({ modkey,           }, "p",     function () awful.util.spawn("psi") end),
+-- Run programs
+    awful.key({ modkey,           }, "o",     function () awful.util.spawn("opera -notrayicon") end),
+    awful.key({ modkey,           }, "p",     function () awful.util.spawn("psi") end),
 
-    -- MPD Controlling
-    key({   }, "XF86AudioPlay",     function () os.execute("mpc toggle") end),
-    key({   }, "XF86AudioStop",     function () os.execute("mpc stop")   end),
-    key({   }, "XF86AudioPrev",     function () os.execute("mpc prev")   end),
-    key({   }, "XF86AudioNext",     function () os.execute("mpc next")   end),
-    key({   }, "XF86AudioMute",     function () os.execute("echo $EDITOR > /tmp/aw.log") end),
-    
+-- MPD Controlling
+    awful.key({   }, "XF86AudioPlay",     function () os.execute("mpc toggle") end),
+    awful.key({   }, "XF86AudioStop",     function () os.execute("mpc stop")   end),
+    awful.key({   }, "XF86AudioPrev",     function () os.execute("mpc prev")   end),
+    awful.key({   }, "XF86AudioNext",     function () os.execute("mpc next")   end),
+
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
@@ -269,7 +264,7 @@ globalkeys = awful.util.table.join(
 -- Client awful tagging: this is useful to tag some clients and then do stuff like move to tag on them
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Mod1"   }, "F4",      function (c) c:kill()                         end),
+    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
@@ -441,6 +436,7 @@ awful.hooks.arrange.register(function (screen)
         if c then client.focus = c end
     end
 end)
+
 -- Hook called every thirteen seconds
 awful.hooks.timer.register(13, function ()
     mytextbox.text = os.date(" %a, %d %b | %H:%M ")
