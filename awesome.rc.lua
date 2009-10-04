@@ -55,6 +55,7 @@ floatapps =
     ["MPlayer"] = true,
 --  ["pinentry"] = true,
     ["gimp"] = true,
+    ["feh"] = true,
     -- by instance
 --  ["mocp"] = true
 }
@@ -442,3 +443,10 @@ awful.hooks.timer.register(13, function ()
     mytextbox.text = os.date(" %a, %d %b | %H:%M ")
 end)
 -- }}}
+
+-- TODOs
+-- set default layouts
+awful.layout.set(awful.layout.suit.max, tags[1][1])
+awful.layout.set(awful.layout.suit.floating, tags[1][9])
+-- spawn terminals?
+-- write layout for Psi
