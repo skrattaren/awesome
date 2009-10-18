@@ -239,6 +239,8 @@ globalkeys = awful.util.table.join(
     awful.key({   }, "XF86AudioStop",     function () os.execute("mpc stop")   end),
     awful.key({   }, "XF86AudioPrev",     function () os.execute("mpc prev")   end),
     awful.key({   }, "XF86AudioNext",     function () os.execute("mpc next")   end),
+    awful.key({   }, "XF86AudioRaiseVolume",     function () os.execute("amixer set Master 5%+")   end),
+    awful.key({   }, "XF86AudioLowerVolume",     function () os.execute("amixer set Master 5%-")   end),
 
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
