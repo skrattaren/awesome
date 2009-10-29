@@ -9,7 +9,8 @@ require("naughty")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/sterkrig/.config/awesome/gentoo-blue_default/theme.lua")
+beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+awful.util.spawn("awsetbg /home/sterkrig/bilder/gentoo/blue.png")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
@@ -51,7 +52,7 @@ tags.setup = {
     { name = "term",  	layout = layouts[1]  },
     { name = "psi",   	layout = layouts[3], mwfact = 0.13 },
     { name = "verkterm",layout = layouts[1]  },
-    { name = "eric",    	layout = layouts[7]  },
+    { name = "eric",    	layout = layouts[8]  },
     { name = "6",    	layout = layouts[1], hide   = true },
     { name = "sieben",	layout = layouts[1]   },
     { name = "8",	layout = layouts[1], hide   = true },
