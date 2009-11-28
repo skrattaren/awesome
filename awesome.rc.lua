@@ -220,7 +220,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"   }, "q", awesome.quit),
 
 -- Run programs
-    awful.key({ modkey,           }, "o",     function () awful.util.spawn("opera systemstyle -notrayicon") end),
+    awful.key({ modkey,           }, "o",     function () awful.util.spawn("opera -systemstyle") end),
     awful.key({ modkey,           }, "p",     function () awful.util.spawn("psi") end),
 
 -- MPD Controlling
