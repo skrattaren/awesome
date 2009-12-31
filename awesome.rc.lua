@@ -7,10 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
--- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-awful.util.spawn("awsetbg /home/sterkrig/bilder/gentoo/blue.png")
+-- Load box-specific config portion
+dofile(os.getenv("HOME") .. "/.config/awesome/per-box.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
@@ -52,7 +50,7 @@ tags.setup = {
     { name = "term",  	layout = layouts[1]  },
     { name = "psi",   	layout = layouts[3], mwfact = 0.13 },
     { name = "verkterm",layout = layouts[1]  },
-    { name = "eric",    	layout = layouts[8]  },
+    { name = "eric",   	layout = layouts[8]  },
     { name = "6",    	layout = layouts[1], hide   = true },
     { name = "sieben",	layout = layouts[1]   },
     { name = "8",	layout = layouts[1], hide   = true },
