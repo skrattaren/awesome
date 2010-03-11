@@ -7,8 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
--- Load box-specific config portion
-dofile(os.getenv("HOME") .. "/.config/awesome/per-box.lua")
+-- {{{ Variable definitions
+
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
@@ -44,18 +44,8 @@ layouts =
 -- }}}
 
 -- {{{ Tags
-local tags = {}
-tags.setup = {
-    { name = "webb",  	layout = layouts[7]  },
-    { name = "term",  	layout = layouts[1]  },
-    { name = "psi",   	layout = layouts[3], mwfact = 0.13 },
-    { name = "verkterm",layout = layouts[1]  },
-    { name = "eric",   	layout = layouts[8]  },
-    { name = "6",    	layout = layouts[1], hide   = true },
-    { name = "sieben",	layout = layouts[1]   },
-    { name = "8",	layout = layouts[1], hide   = true },
-    { name = "var",	layout = layouts[8]  }
-}
+
+dofile(os.getenv("HOME") .. "/.config/awesome/per-box.lua")
 
 for s = 1, screen.count() do
     tags[s] = {}
@@ -375,3 +365,6 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+
