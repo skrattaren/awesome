@@ -8,8 +8,6 @@ require("beautiful")
 require("naughty")
 
 -- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 
 -- This is used later as the default terminal and editor to run.
@@ -46,36 +44,17 @@ layouts =
 -- }}}
 
 -- {{{ Tags
-local tags = {}
-tags.setup = {}
-tags.setup[1] = {
-    { name = "webb",  	layout = layouts[7]  },
-    { name = "term",  	layout = layouts[1], mwfact = 0.60 },
-    { name = "psi",   	layout = layouts[1], mwfact = 0.83 },
-    { name = "verkterm",layout = layouts[1]  },
-    { name = "IDE",   	layout = layouts[1]  },
-    { name = "6",    	layout = layouts[1], hide   = true },
-    { name = "sieben",	layout = layouts[1]   },
-    { name = "8",	layout = layouts[1], hide   = true },
-    { name = "var",	layout = layouts[8]  }
-}
 
-tags.setup[2] = {
-    { name = "term",  	layout = layouts[1], mwfact = 0.60 },
-    { name = "psi",   	layout = layouts[1], mwfact = 0.83 },
-    { name = "verkterm",layout = layouts[1]  },
-    { name = "var",	layout = layouts[8]  }
-}
-
+dofile(os.getenv("HOME") .. "/.config/awesome/per-box.lua")
 
 for s = 1, screen.count() do
     tags[s] = {}
-    for i, t in ipairs(tags.setup[s]) do
-       tags[s][i] = tag({ name = t.name })
-       tags[s][i].screen = s
-       awful.tag.setproperty(tags[s][i], "layout", t.layout)
-       awful.tag.setproperty(tags[s][i], "mwfact", t.mwfact)
-       awful.tag.setproperty(tags[s][i], "hide",   t.hide)
+    for i, t in ipairs(tags.setup) do
+        tags[s][i] = tag({ name = t.name })
+        tags[s][i].screen = s
+        awful.tag.setproperty(tags[s][i], "layout", t.layout)
+        awful.tag.setproperty(tags[s][i], "mwfact", t.mwfact)
+        awful.tag.setproperty(tags[s][i], "hide",   t.hide)
     end
     tags[s][1].selected = true
 end
@@ -265,7 +244,7 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ modkey, "Mod1"    }, "F4",     function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "n",      awful.client.movetoscreen                        ),
