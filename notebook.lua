@@ -6,7 +6,7 @@ tags = {}
 tags.setup = {
     { name = "webb",    layout = layouts[7]  },
     { name = "term",    layout = layouts[1]  },
-    { name = "psi",     layout = layouts[3], mwfact = 0.13 },
+    { name = "psi",     layout = layouts[1], ncol = 2, mwfact = 0.15 },
     { name = "verkterm",layout = layouts[1]  },
     { name = "IDE",     layout = layouts[8]  },
     { name = "6",       layout = layouts[1], hide   = true },
