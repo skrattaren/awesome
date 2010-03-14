@@ -54,6 +54,7 @@ for s = 1, screen.count() do
         tags[s][i].screen = s
         awful.tag.setproperty(tags[s][i], "layout", t.layout)
         awful.tag.setproperty(tags[s][i], "mwfact", t.mwfact)
+        awful.tag.setproperty(tags[s][i], "ncol",   t.ncol)
         awful.tag.setproperty(tags[s][i], "hide",   t.hide)
     end
     tags[s][1].selected = true
@@ -360,6 +361,10 @@ client.add_signal("manage", function (c, startup)
             awful.placement.no_overlap(c)
             awful.placement.no_offscreen(c)
         end
+    end
+
+    if c.class == "psi" and not c.name:find("Psi") then
+        awful.client.setslave(c)
     end
 
     -- Honor size hints
