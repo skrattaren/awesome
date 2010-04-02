@@ -41,7 +41,6 @@ function batteryInfo(adapter)
     fcur:close()
     fcap:close()
     fsta:close()
-    -- coroutine.yield(spacer.."Bat:"..spacer..dir..battery..dir..spacer)
     return spacer..prefix..spacer..dir..battery..dir..spacer
 end
 
