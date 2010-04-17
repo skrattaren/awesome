@@ -381,16 +381,11 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 
 -- Battery
 require("battery")
---[[
-bat_cloj = battery.closure("BAT0")
-batterywidget.text = bat_cloj()
+
+bat_clo = battery.batclosure("BAT0")
+batterywidget.text = bat_clo()
 battimer = timer({ timeout = 31 })
-battimer:add_signal("timeout", function() batterywidget.text = bat_cloj() end)
-battimer:start()
---]]
-batterywidget.text = battery.batteryInfo("BAT0")
-battimer = timer({ timeout = 31 })
-battimer:add_signal("timeout", function() batterywidget.text = battery.batteryInfo("BAT0") end)
+battimer:add_signal("timeout", function() batterywidget.text = bat_clo() end)
 battimer:start()
 
 -- }}}
