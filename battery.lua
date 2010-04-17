@@ -13,10 +13,10 @@ module("battery")
 
 local limits = {{25, 5},
           {12, 3},
-           {7, 1},
+          { 7, 1},
             {0}}
 
-function get_bat_state(adapter)
+function get_bat_state (adapter)
     local fcur = io.open("/sys/class/power_supply/"..adapter.."/charge_now")
     local fcap = io.open("/sys/class/power_supply/"..adapter.."/charge_full")
     local fsta = io.open("/sys/class/power_supply/"..adapter.."/status")
@@ -54,14 +54,14 @@ function getnextlim (num)
 end
 
 
-function batclosure(adapter)
+function batclosure (adapter)
     local nextlim = limits[1][1]
     return function ()
         local prefix = "⚡"
         local battery, dir = get_bat_state(adapter)
         if dir == -1 then
             dirsign = "↓"
-            prefix = "Batt:"
+            prefix = "Bat:"
             if battery <= nextlim then
                 naughty.notify({title = "⚡ Lystring! ⚡",
                             text = "Batteriet har nått låg nivå ( ⚡ "..battery.."%)!",
@@ -74,6 +74,7 @@ function batclosure(adapter)
             end
         elseif dir == 1 then
             dirsign = "↑"
+            nextlim = limits[1][1]
         end
         if dir ~= "" then battery = battery.."%" end
         return " "..prefix.." "..dirsign..battery..dirsign.." "
