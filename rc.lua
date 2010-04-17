@@ -200,7 +200,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ "Mod1",           }, "Tab",
         function ()
-            awful.client.focus.history.previous()
+            local prev_exists = awful.client.focus.history.get(mouse.screen, 1)
+            if prev_exists then
+                awful.client.focus.history.previous()
+            else
+                awful.client.focus.byidx( 1)
+            end
             if client.focus then
                 client.focus:raise()
             end
@@ -209,7 +214,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Control"   }, "q", awesome.quit),
+    awful.key({ modkey, "Control" }, "q", awesome.quit),
 
 -- Run programs
     awful.key({ modkey,           }, "o",     function () awful.util.spawn("opera -systemstyle") end),
@@ -389,6 +394,5 @@ battimer:add_signal("timeout", function() batterywidget.text = battery.batteryIn
 battimer:start()
 
 -- }}}
-
 
 
