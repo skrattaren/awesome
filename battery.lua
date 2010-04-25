@@ -6,7 +6,6 @@ local tonumber = tonumber
 local tostring = tostring
 local print = print
 local pairs = pairs
-local coroutine = coroutine
 
 module("battery")
 -- Based on http://awesome.naquadah.org/wiki/Gigamo_Battery_Widget
