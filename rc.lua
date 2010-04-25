@@ -216,20 +216,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
--- Run programs
-    awful.key({ modkey,           }, "o",     function () awful.util.spawn("opera -systemstyle") end),
-    awful.key({ modkey,           }, "p",     function () awful.util.spawn("psi") end),
-
--- MPD Controlling
-    awful.key({   }, "XF86AudioPlay",     function () os.execute("mpc toggle") end),
-    awful.key({   }, "XF86AudioStop",     function () os.execute("mpc stop")   end),
-    awful.key({   }, "XF86AudioPrev",     function () os.execute("mpc prev")   end),
-    awful.key({   }, "XF86AudioNext",     function () os.execute("mpc next")   end),
-    awful.key({   }, "XF86AudioMute",     function () os.execute("mpc single") end),
-    awful.key({   }, "XF86AudioRaiseVolume",     function () os.execute("amixer set Master 5%+")   end),
-    awful.key({   }, "XF86AudioLowerVolume",     function () os.execute("amixer set Master 5%-")   end),
-
-
+    -- Managing layout
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
