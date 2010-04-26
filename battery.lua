@@ -75,8 +75,10 @@ function batclosure (adapter)
         elseif dir == 1 then
             dirsign = "↑"
             nextlim = limits[1][1]
+        else
+            dirsign = ""
         end
-        if dir ~= "" then battery = battery.."%" end
+        if dir ~= 0 then battery = battery.."%" end
         return " "..prefix.." "..dirsign..battery..dirsign.." "
     end
 end
