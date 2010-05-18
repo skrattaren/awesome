@@ -146,6 +146,9 @@ for s = 1, screen.count() do
     -- Create a battery widget
     batterywidget = widget({type = "textbox", name = "batterywidget", align = "right" })
 
+    -- Create a thermal widget
+    thermowidget = widget({type = "textbox", name = "thermowidget", align = "right" })
+
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "bottom", screen = s })
     -- Add widgets to the wibox - order matters
@@ -366,14 +369,20 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- Battery
-require("battery")
+ -- Custom widgets
+require("widget_fun")
 
-bat_clo = battery.batclosure("BAT0")
+-- Battery
+bat_clo = widget_funs.batclosure("BAT0")
 batterywidget.text = bat_clo()
 battimer = timer({ timeout = 31 })
 battimer:add_signal("timeout", function() batterywidget.text = bat_clo() end)
 battimer:start()
+
+-- Temperature
+thermotimer = timer({ timeout = 11 })
+thermotimer:add_signal("timeout", function() thermowidget.text = widget_funs.get_temp() end)
+thermotimer:start()
 
 -- }}}
 

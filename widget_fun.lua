@@ -7,8 +7,9 @@ local tostring = tostring
 local print = print
 local pairs = pairs
 
-module("battery")
--- Based on http://awesome.naquadah.org/wiki/Gigamo_Battery_Widget
+module("widget_funs")
+
+-- Battery (based on http://awesome.naquadah.org/wiki/Gigamo_Battery_Widget)
 
 local limits = {{25, 5},
           {12, 3},
@@ -80,5 +81,11 @@ function batclosure (adapter)
         if dir ~= 0 then battery = battery.."%" end
         return " "..prefix.." "..dirsign..battery..dirsign.." "
     end
+end
+
+function get_temp ()
+    local temp = io.open("/sys/class/thermal/thermal_zone0/temp")
+    local temp = math.floor(temp:read() / 1000)
+    return to_string(temp) .. "°C"
 end
 
