@@ -159,6 +159,7 @@ for s = 1, screen.count() do
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
+        thermowidget,
         batterywidget,
         mylayoutbox[s],
         mytextclock,
@@ -380,6 +381,7 @@ battimer:add_signal("timeout", function() batterywidget.text = bat_clo() end)
 battimer:start()
 
 -- Temperature
+thermowidget.text = widget_funs.get_temp()
 thermotimer = timer({ timeout = 11 })
 thermotimer:add_signal("timeout", function() thermowidget.text = widget_funs.get_temp() end)
 thermotimer:start()

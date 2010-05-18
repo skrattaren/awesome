@@ -2,8 +2,6 @@ local io = io
 local math = math
 local naughty = naughty
 local beautiful = beautiful
-local tonumber = tonumber
-local tostring = tostring
 local print = print
 local pairs = pairs
 
@@ -86,6 +84,6 @@ end
 function get_temp ()
     local temp = io.open("/sys/class/thermal/thermal_zone0/temp")
     local temp = math.floor(temp:read() / 1000)
-    return to_string(temp) .. "°C"
+    return temp.."°C"
 end
 
