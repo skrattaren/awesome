@@ -84,6 +84,6 @@ end
 function get_temp ()
     local temp = io.open("/sys/class/thermal/thermal_zone0/temp")
     local temp = math.floor(temp:read() / 1000)
-    return temp.."°C"
+    return " "..temp.."°C "
 end
 

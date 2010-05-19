@@ -147,7 +147,9 @@ for s = 1, screen.count() do
     batterywidget = widget({type = "textbox", name = "batterywidget", align = "right" })
 
     -- Create a thermal widget
-    thermowidget = widget({type = "textbox", name = "thermowidget", align = "right" })
+    thermowidget = widget({type = "textbox", name = "thermowidget", align = "right"})
+    thermowidget.border_width = 1
+    thermowidget.border_color = beautiful.fg_normal
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "bottom", screen = s })
