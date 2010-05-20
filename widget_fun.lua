@@ -62,12 +62,12 @@ function batclosure (adapter)
             prefix = "Bat:"
             if battery <= nextlim then
                 naughty.notify({title = "⚡ Lystring! ⚡",
-                            text = "Batteriet har nått låg nivå ( ⚡ "..battery.."%)!",
-                            timeout = 7,
-                            position = "bottom_right",
-                            fg = beautiful.fg_focus,
-                            bg = beautiful.bg_focus
-                            })
+                                text = "Batteriet har nått låg nivå ( ⚡ "..battery.."%)!",
+                                timeout = 7,
+                                position = "bottom_right",
+                                fg = beautiful.fg_focus,
+                                bg = beautiful.bg_focus
+                               })
                 nextlim = getnextlim(battery)
             end
         elseif dir == 1 then
@@ -84,6 +84,15 @@ end
 function get_temp ()
     local temp = io.open("/sys/class/thermal/thermal_zone0/temp")
     local temp = math.floor(temp:read() / 1000)
+    if temp > 87 then
+        naughty.notify({title = "Systemvärmgång!",
+                        text = "Temperatur utgick till ("..temp.."°C)!",
+                        timeout = 3,
+                        position = "bottom_left",
+                        fg = beautiful.fg_focus,
+                        bg = beautiful.bg_focus
+                       })
+    end
     return " "..temp.."°C "
 end
 
