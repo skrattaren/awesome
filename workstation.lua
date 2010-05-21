@@ -14,4 +14,6 @@ tags.setup = {
     { name = "var",     layout = layouts[8]  }
 }
 
+-- Custom widgets
+custom_widgets = {}
 
