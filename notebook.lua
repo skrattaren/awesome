@@ -15,4 +15,35 @@ tags.setup = {
     { name = "var",     layout = layouts[8]  }
 }
 
+-- Create a battery widget
+batterywidget = widget({type = "textbox", name = "batterywidget", align = "right" })
+
+-- Create a thermal widget
+thermowidget = widget({type = "textbox", name = "thermowidget", align = "right"})
+thermowidget.border_width = 1
+thermowidget.border_color = beautiful.fg_normal
+
+-- Custom widgets
+require("widget_fun")
+
+-- Battery
+bat_clo = widget_funs.batclosure("BAT0")
+batterywidget.text = bat_clo()
+battimer = timer({ timeout = 31 })
+battimer:add_signal("timeout", function() batterywidget.text = bat_clo() end)
+battimer:start()
+
+-- Temperature
+thermowidget.text = widget_funs.get_temp()
+thermotimer = timer({ timeout = 11 })
+thermotimer:add_signal("timeout", function() thermowidget.text = widget_funs.get_temp() end)
+thermotimer:start()
+
+
+-- Create custom widget table
+custom_widgets = {
+                thermowidget,
+                batterywidget,
+                }
+
 
