@@ -2,6 +2,7 @@
 -- Themes define colours, icons, and wallpapers
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
 
+-- Tags
 tags = {}
 tags.setup = {
     { name = "webb",    layout = layouts[7]  },
@@ -15,35 +16,40 @@ tags.setup = {
     { name = "var",     layout = layouts[8]  }
 }
 
--- Create a battery widget
-batterywidget = widget({type = "textbox", name = "batterywidget", align = "right" })
-
--- Create a thermal widget
-thermowidget = widget({type = "textbox", name = "thermowidget", align = "right"})
-thermowidget.border_width = 1
-thermowidget.border_color = beautiful.fg_normal
-
--- Custom widgets
 require("widget_fun")
 
--- Battery
+-- Battery widget
+batterywidget = widget({type = "textbox", name = "batterywidget"})
 bat_clo = widget_funs.batclosure("BAT0")
 batterywidget.text = bat_clo()
 battimer = timer({ timeout = 31 })
 battimer:add_signal("timeout", function() batterywidget.text = bat_clo() end)
 battimer:start()
 
--- Temperature
+-- Thermal widget
+thermowidget = widget({type = "textbox", name = "thermowidget"})
+thermowidget.border_width = 1
+thermowidget.border_color = beautiful.fg_normal
 thermowidget.text = widget_funs.get_temp()
 thermotimer = timer({ timeout = 11 })
 thermotimer:add_signal("timeout", function() thermowidget.text = widget_funs.get_temp() end)
 thermotimer:start()
 
 
+-- CPU load widget
+cpubar = awful.widget.progressbar()
+cpubar.set_width = 66
+cpubar.margin = {3, 3, 3, 3}
+cpubar.set_ticks = true
+cputimer = timer({ timeout = 1 })
+cputimer:add_signal("timeout", function() cpubar:set_value(widget_funs.get_cpu_load()/100) end)
+cputimer:start()
+
+
 -- Create custom widget table
 custom_widgets = {
                 thermowidget,
                 batterywidget,
+                -- cpubar.widget,
                 }
-
 

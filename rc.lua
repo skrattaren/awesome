@@ -144,6 +144,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(function(c)
                                               return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
+
     custom_widgets.layout = awful.widget.layout.horizontal.rightleft
 
     -- Create the wibox

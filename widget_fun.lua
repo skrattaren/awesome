@@ -4,6 +4,7 @@ local naughty = naughty
 local beautiful = beautiful
 local print = print
 local pairs = pairs
+local require = require
 
 module("widget_funs")
 
@@ -94,5 +95,13 @@ function get_temp ()
                        })
     end
     return " "..temp.."°C "
+end
+
+ -- Get CPU load (requires "cpu" module from Vicious library)
+
+require("cpu")
+function get_cpu_load()
+    return 66
+    --return vicious.widgets.cpu()[1]
 end
 
