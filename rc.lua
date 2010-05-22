@@ -318,7 +318,7 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set browsers to always map on tags number 2 of screen 1.
+    -- Set browsers to always map on tags number 1 of screen 1.
     { rule = { class = "Opera" },
       properties = { tag = tags[1][1] } },
     { rule = { class = "GNU IceCat" },
@@ -327,6 +327,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][1] } },
     { rule = { class = "psi" },
       properties = { tag = tags[1][3] } },
+    { rule = { class = "Qtr" },
+      properties = { tag = tags[1][8] } },
 }
 -- }}}
 
