@@ -6,7 +6,11 @@ local print = print
 local pairs = pairs
 local require = require
 
-module("widget_funs")
+require("cpu")
+local vicious = vicious
+
+module("widget_fun")
+
 
 -- Battery (based on http://awesome.naquadah.org/wiki/Gigamo_Battery_Widget)
 
@@ -99,9 +103,7 @@ end
 
  -- Get CPU load (requires "cpu" module from Vicious library)
 
-require("cpu")
 function get_cpu_load()
-    return 66
-    --return vicious.widgets.cpu()[1]
+    return vicious.widgets.cpu()[1]
 end
 
