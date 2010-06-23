@@ -38,8 +38,8 @@ thermotimer:start()
 
 -- CPU load widget
 cpubar = awful.widget.progressbar()
-cpubar:set_gradient_colors({"#4f7f4fff", "#d3d3d3ff"})
-cpubar:set_background_color("#3F3F3F")
+cpubar:set_gradient_colors({beautiful.gradient_1, beautiful.gradient_2})
+cpubar:set_background_color(beautiful.bg_widget)
 cpubar:set_ticks(true)
 cputimer = timer({ timeout = 1 })
 cputimer:add_signal("timeout", function() cpubar:set_value(widget_fun.get_cpu_load()/100) end)
