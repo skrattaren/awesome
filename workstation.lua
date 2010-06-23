@@ -15,5 +15,7 @@ tags.setup = {
 }
 
 -- Custom widgets
-custom_widgets = {}
+require("widgets")
+
+custom_widgets = widgets.cpubar.widget
 
