@@ -1,4 +1,4 @@
--- GentooBook specific settings for awesome
+-- Workstation-specific settings for awesome
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
 
 tags = {}
@@ -14,17 +14,8 @@ tags.setup = {
     { name = "var",     layout = layouts[8]  }
 }
 
-require("widget_fun")
-
--- CPU load widget
-cpubar = awful.widget.progressbar()
-cpubar:set_gradient_colors({"#4f7f4fff", "#d3d3d3ff"})
-cpubar:set_background_color("#3F3F3F")
-cpubar:set_ticks(true)
-cputimer = timer({ timeout = 1 })
-cputimer:add_signal("timeout", function() cpubar:set_value(widget_fun.get_cpu_load()/100) end)
-cputimer:start()
-
 -- Custom widgets
-custom_widgets = cpubar.widget
+require("widgets")
+
+custom_widgets = widgets.cpubar.widget
 

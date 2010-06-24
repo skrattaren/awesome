@@ -21,6 +21,7 @@ local limits = {{25, 5},
 
 function get_bat_state (adapter)
     local fcur = io.open("/sys/class/power_supply/"..adapter.."/charge_now")
+    if not fcur then return end
     local fcap = io.open("/sys/class/power_supply/"..adapter.."/charge_full")
     local fsta = io.open("/sys/class/power_supply/"..adapter.."/status")
     local cur = fcur:read()
@@ -62,6 +63,7 @@ function batclosure (adapter)
     return function ()
         local prefix = "⚡"
         local battery, dir = get_bat_state(adapter)
+        if not battery then return end
         if dir == -1 then
             dirsign = "↓"
             prefix = "Bat:"
@@ -88,6 +90,7 @@ end
 
 function get_temp ()
     local temp = io.open("/sys/class/thermal/thermal_zone0/temp")
+    if not temp then return end
     local temp = math.floor(temp:read() / 1000)
     if temp > 87 then
         naughty.notify({title = "Systemvärmgång!",
