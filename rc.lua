@@ -9,6 +9,8 @@ require("naughty")
 
 -- {{{ Variable definitions
 
+-- Create a table to store specific clients
+clnt_table = {}
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
@@ -217,6 +219,19 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "q", awesome.quit),
 
+    -- Manipulating Conky window
+    awful.key({ modkey,           }, "0",
+        function ()
+                conky = clnt_table["conky"]
+                if conky.hidden then
+                    conky:tags({})
+                    awful.client.movetoscreen(conky, mouse.screen)
+                    awful.tag.withcurrent(conky)
+                    awful.placement.centered(conky)
+                end
+                conky.hidden = not conky.hidden
+        end),
+
     -- Managing layout
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -326,10 +341,16 @@ awful.rules.rules = {
       properties = { tag = tags[1][1] } },
     { rule = { class = "Arora" },
       properties = { tag = tags[1][1] } },
+    -- Some other tag bindings
     { rule = { class = "psi" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "Qtr" },
       properties = { tag = tags[1][8] } },
+    -- Catch Conky window
+    { rule = { class = "Conky" },
+      properties = { floating = true, hidden = true },
+      callback = function(c)
+          clnt_table["conky"] = c end },
 }
 -- }}}
 
