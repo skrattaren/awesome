@@ -4,18 +4,24 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
 
 -- Tags
 tags = {}
-tags.setup = {}
-tags.setup[1] = {
+tags.setup = {
     { name = "webb",    layout = layouts[7]  },
     { name = "term",    layout = layouts[1]  },
     { name = "psi",     layout = layouts[1], ncol = 2, mwfact = 0.15 },
     { name = "verkterm",layout = layouts[1]  },
     { name = "IDE",     layout = layouts[8]  },
-    { name = "6",       layout = layouts[1], hide   = true },
+    { name = "6",       layout = layouts[1], hide = true },
     { name = "sieben",  layout = layouts[1]   },
-    { name = "8",       layout = layouts[1], hide   = true },
+    { name = "8",       layout = layouts[1], hide = true },
     { name = "var",     layout = layouts[8]  }
 }
+
+--[[
+tags.mods = {}
+tags.mods[1] = {
+    [8] = { hide = false }
+}
+--]]
 
 require("widgets")
 
