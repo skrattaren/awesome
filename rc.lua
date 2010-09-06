@@ -50,7 +50,7 @@ dofile(os.getenv("HOME") .. "/.config/awesome/per-box.lua")
 
 for s = 1, screen.count() do
     tags[s] = {}
-    for i, t in ipairs(tags.setup) do
+    for i, t in ipairs(tags.setup[s]) do
         tags[s][i] = tag({ name = t.name })
         tags[s][i].screen = s
         awful.tag.setproperty(tags[s][i], "layout", t.layout)
