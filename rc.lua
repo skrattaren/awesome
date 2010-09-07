@@ -62,6 +62,9 @@ for s = 1, screen.count() do
         if tags.mods[s] and tags.mods[s][i] then
             for prop, val in pairs(tags.mods[s][i]) do
                 awful.tag.setproperty(tags[s][i], prop, val)
+                if prop == "name" then
+                    tags[s][i].name = val
+                end
             end
         end
     end

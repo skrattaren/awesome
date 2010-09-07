@@ -4,6 +4,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
 
 -- Tags
 tags = {}
+tags.mods = {}
 tags.setup = {
     { name = "webb",    layout = layouts[7]  },
     { name = "term",    layout = layouts[1]  },
@@ -17,7 +18,6 @@ tags.setup = {
 }
 
 --[[
-tags.mods = {}
 tags.mods[1] = {
     [8] = { hide = false }
 }
