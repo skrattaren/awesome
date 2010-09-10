@@ -356,7 +356,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][8] } },
     -- Catch Conky window
     { rule = { class = "Conky" },
-      properties = { floating = true, hidden = true },
+      properties = { floating = true, hidden = true, ontop = true },
       callback = function(c)
           clnt_table["conky"] = c end },
 }
