@@ -18,7 +18,7 @@ tags.setup = {
 tags.mods[2] = {
     [1] = { name = "doc" },
     [5] = { hide = true },
-    [3] = { layout = layouts[3], mwfact = 0.5 },
+    [3] = { layout = layouts[4], mwfact = 0.5 },
 }
 
 -- Custom widgets
