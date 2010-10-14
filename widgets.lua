@@ -33,3 +33,5 @@ local cputimer = timer({ timeout = 1 })
 cputimer:add_signal("timeout", function() cpubar:set_value(widget_fun.get_cpu_load()/100) end)
 cputimer:start()
 
+-- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
+
