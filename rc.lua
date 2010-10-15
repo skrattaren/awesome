@@ -94,6 +94,12 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right"} , " %a, %d %b | %H:%M ", 13 )
 
+-- Keyboard layout widget
+kbdwidget = widget({type = "textbox", name = "kbdwidget"})
+kbdwidget.border_width = 1
+kbdwidget.border_color = beautiful.fg_normal
+kbdwidget.text = " Eng "
+
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
@@ -159,12 +165,6 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "bottom", screen = s })
-
-    -- Keyboard layout widget
-    kbdwidget = widget({type = "textbox", name = "kbdwidget"})
-    kbdwidget.border_width = 1
-    kbdwidget.border_color = beautiful.fg_normal
-    kbdwidget.text = " Eng "
 
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
