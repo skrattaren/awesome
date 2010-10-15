@@ -159,6 +159,13 @@ for s = 1, screen.count() do
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "bottom", screen = s })
+
+    -- Keyboard layout widget
+    kbdwidget = widget({type = "textbox", name = "kbdwidget"})
+    kbdwidget.border_width = 1
+    kbdwidget.border_color = beautiful.fg_normal
+    kbdwidget.text = " Eng "
+
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
@@ -171,6 +178,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         s == 1 and mysystray or nil,
+        kbdwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -399,6 +407,15 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
+dbus.request_name("session", "ru.gentoo.kbdd")
+dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
+dbus.add_signal("ru.gentoo.kbdd", function(...)
+    local data = {...}
+    local layout = data[2]
+    lts = {[0] = "Eng", [1] = "Рус"}
+    kbdwidget.text = " "..lts[layout].." "
+    end
+)
 -- }}}
 
 

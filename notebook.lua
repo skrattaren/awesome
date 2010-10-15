@@ -12,7 +12,7 @@ tags.setup = {
     { name = "verkterm",layout = layouts[1]  },
     { name = "IDE",     layout = layouts[8]  },
     { name = "6",       layout = layouts[1], hide = true },
-    { name = "sieben",  layout = layouts[1]   },
+    { name = "sieben",  layout = layouts[1]  },
     { name = "8",       layout = layouts[1], hide = true },
     { name = "var",     layout = layouts[8]  }
 }
