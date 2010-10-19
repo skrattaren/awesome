@@ -332,7 +332,6 @@ clientbuttons = awful.util.table.join(
 
 -- Set keys
 root.keys(globalkeys)
---c.size_hints_honor = true
 -- }}}
 
 -- {{{ Rules
