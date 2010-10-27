@@ -359,7 +359,7 @@ awful.rules.rules = {
     -- Some other tag bindings
     { rule = { class = "psi" },
       properties = { tag = tags[1][3] } },
-    { rule = { class = "Qtr" },
+    { rule = { class = "Transmission-qt" },
       properties = { tag = tags[1][8] } },
     -- Catch Conky window
     { rule = { class = "Conky" },
