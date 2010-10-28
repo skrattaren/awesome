@@ -1,5 +1,5 @@
 -- Workstation-specific settings for awesome
-beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
 
 tags = {}
 tags.mods = {}

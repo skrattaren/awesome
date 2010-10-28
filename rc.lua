@@ -48,7 +48,7 @@ layouts =
 -- {{{ Tags
 
 -- Load symlinked per-box file
-dofile(os.getenv("HOME") .. "/.config/awesome/per-box.lua")
+dofile(awful.util.getdir("config") .. "/per-box.lua")
 
 for s = 1, screen.count() do
     tags[s] = {}
