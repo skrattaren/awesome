@@ -20,11 +20,8 @@ battimer:start()
 thermowidget = widget({type = "textbox", name = "thermowidget"})
 thermowidget.border_width = 1
 thermowidget.border_color = beautiful.fg_normal
-thermowidget.text = widget_fun.get_temp()
-local thermotimer = timer({ timeout = 11 })
-thermotimer:add_signal("timeout", function() thermowidget.text = widget_fun.get_temp() end)
-thermotimer:start()
-
+vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp, 11,
+                    "thermal_zone0")
 
 -- CPU load widget
 cpubar = awful.widget.progressbar()

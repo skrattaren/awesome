@@ -2,7 +2,6 @@ local io = io
 local math = math
 local naughty = naughty
 local beautiful = beautiful
-local print = print
 local pairs = pairs
 local require = require
 
@@ -85,10 +84,8 @@ function batclosure (adapter)
     end
 end
 
-function get_temp ()
-    local temp = io.open("/sys/class/thermal/thermal_zone0/temp")
-    if not temp then return end
-    local temp = math.floor(temp:read() / 1000)
+function watch_temp (thermowidget, args)
+    local temp = args[1]
     if temp > 87 then
         naughty.notify({title = "Systemvärmgång!",
                         text = "Temperatur utgick till ("..temp.."°C)!",
