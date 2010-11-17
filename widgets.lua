@@ -4,6 +4,8 @@ local beautiful = beautiful
 local awful = awful
 require("widget_fun")
 local widget_fun = widget_fun
+require("vicious")
+local vicious = vicious
 module("widgets")
 
 -- Battery widget
@@ -29,9 +31,7 @@ cpubar = awful.widget.progressbar()
 cpubar:set_gradient_colors({beautiful.gradient_1, beautiful.gradient_2})
 cpubar:set_background_color(beautiful.bg_widget)
 cpubar:set_ticks(true)
-local cputimer = timer({ timeout = 1 })
-cputimer:add_signal("timeout", function() cpubar:set_value(widget_fun.get_cpu_load()/100) end)
-cputimer:start()
+vicious.register(cpubar, vicious.widgets.cpu, "$1", 1)
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
 

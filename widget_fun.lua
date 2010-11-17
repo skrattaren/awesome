@@ -6,9 +6,6 @@ local print = print
 local pairs = pairs
 local require = require
 
-require("cpu")
-local vicious = vicious
-
 module("widget_fun")
 
 
@@ -102,12 +99,6 @@ function get_temp ()
                        })
     end
     return " "..temp.."°C "
-end
-
- -- Get CPU load (requires "cpu" module from Vicious library)
-
-function get_cpu_load()
-    return vicious.widgets.cpu()[1]
 end
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
