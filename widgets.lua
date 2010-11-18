@@ -10,18 +10,15 @@ module("widgets")
 
 -- Battery widget
 batterywidget = widget({type = "textbox", name = "batterywidget"})
-local bat_clo = widget_fun.batclosure("BAT0")
-batterywidget.text = bat_clo()
-local battimer = timer({ timeout = 31 })
-battimer:add_signal("timeout", function() batterywidget.text = bat_clo() end)
-battimer:start()
+vicious.register(batterywidget, vicious.widgets.bat, widget_fun.batclosure(),
+                    31, "BAT0")
 
 -- Thermal widget
 thermowidget = widget({type = "textbox", name = "thermowidget"})
 thermowidget.border_width = 1
 thermowidget.border_color = beautiful.fg_normal
-vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp, 11,
-                    "thermal_zone0")
+vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp,
+                    11, "thermal_zone0")
 
 -- CPU load widget
 cpubar = awful.widget.progressbar()
