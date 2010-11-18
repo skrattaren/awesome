@@ -54,7 +54,7 @@ function batclosure ()
             dirsign = "↑"
             nextlim = limits[1][1]
         else
-            dirsign = ""
+            return " ⚡ "
         end
         if dir ~= 0 then charge = charge.."%" end
         return " "..prefix.." "..dirsign..charge..dirsign.." "
