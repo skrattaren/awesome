@@ -98,7 +98,9 @@ mytextclock = awful.widget.textclock({ align = "right"} , " %a, %d %b | %H:%M ",
 kbdwidget = widget({type = "textbox", name = "kbdwidget"})
 kbdwidget.border_width = 1
 kbdwidget.border_color = beautiful.fg_normal
-kbdwidget.text = " Eng "
+kbdwidget.text = "Eng"
+kbdwidget.width=29
+kbdwidget.align="center"
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -412,7 +414,7 @@ dbus.add_signal("ru.gentoo.kbdd", function(...)
     local data = {...}
     local layout = data[2]
     lts = {[0] = "Eng", [1] = "Рус"}
-    kbdwidget.text = " "..lts[layout].." "
+    kbdwidget.text = lts[layout]
     end
 )
 -- }}}
