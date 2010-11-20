@@ -17,6 +17,8 @@ vicious.register(batterywidget, vicious.widgets.bat, widget_fun.batclosure(),
 thermowidget = widget({type = "textbox", name = "thermowidget"})
 thermowidget.border_width = 1
 thermowidget.border_color = beautiful.fg_normal
+thermowidget.align="center"
+thermowidget.width=29
 vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp,
                     11, "thermal_zone0")
 
