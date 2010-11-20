@@ -10,7 +10,7 @@ if [ -z "$1" -o ! -f "$1" ]; then
     exit 1
 fi
 
-RDIR=$(pwd)/$(dirname $0)
+RDIR=$(dirname `readlink -fn $0`)
 
 excludes="workstation.lua notebook.lua deploy.sh"
 
