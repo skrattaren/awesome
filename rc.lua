@@ -6,6 +6,7 @@ require("awful.rules")
 require("beautiful")
 -- Notification library
 require("naughty")
+naughty.config.default_preset.position = "bottom_right"
 
 -- {{{ Variable definitions
 
