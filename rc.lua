@@ -359,6 +359,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][1] } },
     { rule = { class = "Arora" },
       properties = { tag = tags[1][1] } },
+    { rule = { class = "luakit" },
+      properties = { tag = tags[1][1] } },
     -- Some other tag bindings
     { rule = { class = "psi" },
       properties = { tag = tags[1][3] } },
