@@ -218,15 +218,17 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Shift"   }, "Tab", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey, "Control" }, "k",   function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ "Mod1",           }, "Tab",
         function ()
-            local prev_exists = awful.client.focus.history.get(mouse.screen, 1)
+            if not client.focus then return end
+            local screen = client.focus.screen
+            local prev_exists = awful.client.focus.history.get(screen, 1)
             if prev_exists then
                 awful.client.focus.history.previous()
             else
-                awful.client.focus.byidx( 1)
+                awful.client.focus.byidx(1)
             end
             if client.focus then
                 client.focus:raise()
