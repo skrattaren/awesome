@@ -250,6 +250,9 @@ globalkeys = awful.util.table.join(
                     awful.client.movetoscreen(conky, mouse.screen)
                     awful.tag.withcurrent(conky)
                     awful.placement.centered(conky)
+                elseif not conky:isvisible() then
+                    conky:tags(awful.tag.selectedlist(conky.screen))
+                    return nil
                 else
                     conky:tags({})
                 end
