@@ -7,6 +7,7 @@ require("beautiful")
 -- Notification library
 require("naughty")
 naughty.config.default_preset.position = "bottom_right"
+naughty.config.default_preset.opacity = 0.8
 
 -- {{{ Variable definitions
 
