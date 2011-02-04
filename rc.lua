@@ -247,10 +247,11 @@ globalkeys = awful.util.table.join(
         function ()
                 conky = clnt_table["conky"]
                 if conky.hidden then
-                    conky:tags({})
                     awful.client.movetoscreen(conky, mouse.screen)
                     awful.tag.withcurrent(conky)
                     awful.placement.centered(conky)
+                else
+                    conky:tags({})
                 end
                 conky.hidden = not conky.hidden
         end),
@@ -374,6 +375,7 @@ awful.rules.rules = {
     { rule = { class = "Conky" },
       properties = { floating = true, hidden = true, ontop = true },
       callback = function(c)
+          c:tags({})
           clnt_table["conky"] = c end },
 }
 -- }}}
