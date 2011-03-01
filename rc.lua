@@ -245,7 +245,7 @@ globalkeys = awful.util.table.join(
     -- Manipulating Conky window
     awful.key({ modkey,           }, "0",
         function ()
-                conky = clnt_table["conky"]
+                local conky = clnt_table["conky"]
                 if conky.hidden then
                     awful.client.movetoscreen(conky, mouse.screen)
                     awful.tag.withcurrent(conky)
