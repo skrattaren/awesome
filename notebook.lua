@@ -1,7 +1,3 @@
--- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.getdir("config") .. "/theme/theme.lua")
-
 -- Tags
 tags = {}
 tags.mods = {}

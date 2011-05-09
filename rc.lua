@@ -10,6 +10,20 @@ naughty.config.default_preset.position = "bottom_right"
 naughty.config.default_preset.opacity = 0.8
 
 -- {{{ Variable definitions
+-- Themes define colours, icons, and wallpapers
+do
+    local user_theme, ut
+    user_theme = awful.util.getdir("config") .. "/theme/theme.lua"
+    ut = io.open(user_theme)
+    if ut then
+        print("Theme exists")
+        io.close(ut)
+        beautiful.init(user_theme)
+    else
+        print("Theme doesn't exist, falling back to zenburn")
+        beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+    end
+end
 
 -- Create a table to store specific clients
 clnt_table = {}
