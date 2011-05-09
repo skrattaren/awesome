@@ -16,7 +16,6 @@ do
     user_theme = awful.util.getdir("config") .. "/theme/theme.lua"
     ut = io.open(user_theme)
     if ut then
-        print("Theme exists")
         io.close(ut)
         beautiful.init(user_theme)
     else
