@@ -49,6 +49,7 @@ if [ -e "$CONFDIR" ]; then
         echo "$CONFDIR is not a directory"
         return 1
     fi
+else
     mkdir -p "$CONFDIR"
 fi
 
