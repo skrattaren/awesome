@@ -24,7 +24,10 @@ vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp,
 
 -- CPU load widget
 cpubar = awful.widget.progressbar()
-cpubar:set_gradient_colors({beautiful.gradient_1, beautiful.gradient_2})
+local colour1, colour2
+colour1 = beautiful.gradient_1 or "#4f7f4fff"
+colour2 = beautiful.gradient_2 or "#d3d3d3ff"
+cpubar:set_gradient_colors({colour1, colour2})
 cpubar:set_background_color(beautiful.bg_widget)
 cpubar:set_ticks(true)
 vicious.register(cpubar, vicious.widgets.cpu, "$1", 1)
