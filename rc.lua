@@ -409,6 +409,10 @@ awful.rules.rules = {
 }
 -- }}}
 
+-- Load per-box rules
+add_rules = add_rules or {}
+awful.util.table.join(rules, add_rules)
+
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.add_signal("manage", function (c, startup)
