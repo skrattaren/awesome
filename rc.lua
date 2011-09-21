@@ -409,9 +409,12 @@ awful.rules.rules = {
 }
 -- }}}
 
--- Load per-box rules
-add_rules = add_rules or {}
-awful.util.table.join(rules, add_rules)
+-- Load per-box rules (as string to be loaded)
+add_rules = add_rules or 'add_rules = {}'
+add_rules_f = loadstring(add_rules)
+add_rules_f()
+-- `add_rules` is already table
+awful.rules.rules = awful.util.table.join(awful.rules.rules, add_rules)
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.

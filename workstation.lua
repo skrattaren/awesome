@@ -19,11 +19,15 @@ tags.mods[2] = {
     [3] = { layout = layouts[4], mwfact = 0.5 },
 }
 
--- Rules
-add_rules = {
---    { rule = { instance = "groupchat_tabs" },
---      properties = { tag = tags[2][3] } },
+-- Rules (FIXME)
+-- Ugly hack: code stored as string to be evaluated after `tags`
+-- table definition
+add_rules = [[
+    add_rules = {
+    { rule = { instance = "groupchat_tabs" },
+      properties = { tag = tags[2][3] } },
 }
+]]
 
 -- Custom widgets
 require("widgets")
