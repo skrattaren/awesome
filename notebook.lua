@@ -6,10 +6,10 @@ tags.setup = {
     { name = "term",    layout = layouts[1]  },
     { name = "psi",     layout = layouts[1], ncol = 2, mwfact = 0.15 },
     { name = "verkterm",layout = layouts[1]  },
-    { name = "IDE",     layout = layouts[8]  },
+    { name = "tekst",   layout = layouts[3]  },
     { name = "6",       layout = layouts[1], hide = true },
     { name = "sieben",  layout = layouts[1]  },
-    { name = "8",       layout = layouts[1], hide = true },
+    { name = "8",       layout = layouts[3], hide = true },
     { name = "var",     layout = layouts[8]  }
 }
 
