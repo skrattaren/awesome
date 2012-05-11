@@ -5,7 +5,7 @@ tags.setup = {
     { name = "webb",    layout = layouts[7]  },
     { name = "term",    layout = layouts[1], mwfact = 0.60 },
     { name = "psi",     layout = layouts[2], mwfact = 0.17 },
-    { name = "verkterm",layout = layouts[1]  },
+    { name = "verkterm",layout = layouts[3]  },
     { name = "tekst",   layout = layouts[3]  },
     { name = "6",       layout = layouts[1], hide = true },
     { name = "sieben",  layout = layouts[1]  },
