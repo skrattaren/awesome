@@ -289,7 +289,9 @@ globalkeys = awful.util.table.join(
         function ()
                 local conky = clnt_table["conky"]
                 if conky.hidden then
-                    awful.client.movetoscreen(conky, mouse.screen)
+                    if conky.screen ~= mouse.screen then
+                        awful.client.movetoscreen(conky, mouse.screen)
+                    end
                     awful.tag.withcurrent(conky)
                     awful.placement.centered(conky)
                 elseif not conky:isvisible() then
