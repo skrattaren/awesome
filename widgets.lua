@@ -4,8 +4,7 @@ local beautiful = beautiful
 local awful = awful
 require("widget_fun")
 local widget_fun = widget_fun
-require("vicious")
-local vicious = vicious
+local vicious = require("vicious")
 module("widgets")
 
 -- Battery widget
