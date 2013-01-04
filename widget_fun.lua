@@ -64,8 +64,8 @@ end
 function watch_temp (thermowidget, args)
     local temp = args[1]
     if temp > 87 then
-        naughty.notify({title = "Systemvärmgång!",
-                        text = "Temperatur utgick till ("..temp.."°C)!",
+        naughty.notify({title = "Värmgång i systemet!",
+                        text = "Temperatur är för hög ("..temp.."°C)",
                         timeout = 3,
                         position = "bottom_left",
                         fg = beautiful.fg_focus,
