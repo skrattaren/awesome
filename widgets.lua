@@ -1,23 +1,22 @@
-local widget = widget
+local wibox = require("wibox")
 local timer = timer
-local beautiful = beautiful
-local awful = awful
-require("widget_fun")
-local widget_fun = widget_fun
+local beautiful = require("beautiful")
+local awful = require("awful")
+local widget_fun = require("widget_fun")
 local vicious = require("vicious")
 module("widgets")
 
 -- Battery widget
-batterywidget = widget({type = "textbox", name = "batterywidget"})
+batterywidget = wibox.widget.textbox()
 vicious.register(batterywidget, vicious.widgets.bat, widget_fun.batclosure(),
                     31, "BAT0")
 
 -- Thermal widget
-thermowidget = widget({type = "textbox", name = "thermowidget"})
-thermowidget.border_width = 1
-thermowidget.border_color = beautiful.fg_normal
-thermowidget.align="center"
-thermowidget.width=29
+thermowidget = wibox.widget.textbox()
+--thermowidget.border_width = 1
+--thermowidget.border_color = beautiful.fg_normal
+thermowidget:set_align("center")
+--thermowidget:fit(29)
 vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp,
                     11, "thermal_zone0")
 
@@ -26,7 +25,9 @@ cpubar = awful.widget.progressbar()
 local colour1, colour2
 colour1 = beautiful.gradient_1 or "#4f7f4fff"
 colour2 = beautiful.gradient_2 or "#d3d3d3ff"
-cpubar:set_gradient_colors({colour1, colour2})
+gradient_colour = {type="linear", from={0.5, 0.5}, to={100, 20},
+                   stops={{0, colour1}, {1, colour2}}}
+cpubar:set_color(gradient_colour)
 cpubar:set_background_color(beautiful.bg_widget)
 cpubar:set_ticks(true)
 vicious.register(cpubar, vicious.widgets.cpu, "$1", 1)
