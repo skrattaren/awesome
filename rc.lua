@@ -110,6 +110,7 @@ for s = 1, screen.count() do
         if tags.mods[s] and tags.mods[s][i] then
             t = awful.util.table.join(t, tags.mods[s][i])
         end
+        t.screen = s
         table.insert(tags[s], i, awful.tag.add(t.name, t))
         -- Select the first tag.
         if i == 1 then
