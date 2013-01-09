@@ -149,7 +149,12 @@ mytextclock = awful.widget.textclock(" %a, %d %b | %H:%M ", 13)
 ---[[
 kbdwidget = wibox.widget.textbox()
 -- kbdwidget.border_width = 1
--- kbdwidget.width = 29
+-- `Widget.width = 29`:
+kbdwidget.fit = function(widget, width, height)
+    local _, h = wibox.widget.textbox.fit(widget, width, height)
+    return 29, h
+end
+
 kbdwidget:set_text("Eng")
 kbdwidget:set_align("center")
 
