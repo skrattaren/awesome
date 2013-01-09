@@ -156,7 +156,7 @@ end
 -- Set border
 kbdwidget.draw = function(kbdwidget, wibox_, cr, width, height)
     cr:rectangle(1/2, 1/2, width - 1, height - 1)
-    cr:set_source(gears.color("#fff"))
+    cr:set_source(gears.color(beautiful.fg_normal))
     cr:stroke()
     wibox.widget.textbox.draw(kbdwidget, wibox_, cr, width, height)
 end
