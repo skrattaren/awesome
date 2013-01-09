@@ -146,13 +146,19 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 mytextclock = awful.widget.textclock(" %a, %d %b | %H:%M ", 13)
 
 -- Keyboard layout widget
----[[
 kbdwidget = wibox.widget.textbox()
--- kbdwidget.border_width = 1
--- `Widget.width = 29`:
+-- Set width=29
 kbdwidget.fit = function(widget, width, height)
     local _, h = wibox.widget.textbox.fit(widget, width, height)
     return 29, h
+end
+
+-- Set border
+kbdwidget.draw = function(kbdwidget, wibox_, cr, width, height)
+    cr:rectangle(1/2, 1/2, width - 1, height - 1)
+    cr:set_source(gears.color("#fff"))
+    cr:stroke()
+    wibox.widget.textbox.draw(kbdwidget, wibox_, cr, width, height)
 end
 
 kbdwidget:set_text("Eng")
