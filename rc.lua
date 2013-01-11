@@ -433,7 +433,7 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons,
                      size_hints_honor = false } },
-    { rule = { class = "mplayer2" },
+    { rule_any = { class = { "mplayer2", "MPlayer" } },
       properties = { floating = true } },
     { rule = { class = "feh" },
       properties = { floating = true } },
