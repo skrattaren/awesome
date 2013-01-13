@@ -6,7 +6,7 @@ tags.setup = {
     { name = "term",    layout = layouts[2]  },
     { name = "psi",     layout = layouts[2], ncol = 2, mwfact = 0.15 },
     { name = "verkterm",layout = layouts[2]  },
-    { name = "tekst",   layout = layouts[4]  },
+    { name = "tekst",   layout = layouts[2], mwfact = 0.6 },
     { name = "6",       layout = layouts[2], hide = true },
     { name = "sieben",  layout = layouts[2]  },
     { name = "8",       layout = layouts[4], hide = true },
