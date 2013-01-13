@@ -2,6 +2,7 @@ local wibox = require("wibox")
 local timer = timer
 local beautiful = require("beautiful")
 local awful = require("awful")
+local gears = require("gears")
 local widget_fun = require("widget_fun")
 local vicious = require("vicious")
 module("widgets")
@@ -13,10 +14,20 @@ vicious.register(batterywidget, vicious.widgets.bat, widget_fun.batclosure(),
 
 -- Thermal widget
 thermowidget = wibox.widget.textbox()
---thermowidget.border_width = 1
---thermowidget.border_color = beautiful.fg_normal
 thermowidget:set_align("center")
---thermowidget:fit(29)
+-- set width
+thermowidget.fit = function(widget, width, height)
+    local _, h = wibox.widget.textbox.fit(widget, width, height)
+    return 29, h
+end
+
+-- set border
+thermowidget.draw = function(thermowidget, wibox_, cr, width, height)
+    cr:rectangle(1/2, 1/2, width - 1, height - 1)
+    cr:set_source(gears.color(beautiful.fg_normal))
+    cr:stroke()
+    wibox.widget.textbox.draw(thermowidget, wibox_, cr, width, height)
+end
 vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp,
                     11, "thermal_zone0")
 
