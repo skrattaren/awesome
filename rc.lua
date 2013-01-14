@@ -440,13 +440,7 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set browsers to always map on tags number 1 of screen 1.
-    { rule = { class = "Opera" },
-      properties = { tag = tags[1][1] } },
-    { rule = { class = "GNU IceCat" },
-      properties = { tag = tags[1][1] } },
-    { rule = { class = "Arora" },
-      properties = { tag = tags[1][1] } },
-    { rule = { class = "luakit" },
+    { rule_any = { class = { "Opera", "luakit" } },
       properties = { tag = tags[1][1] } },
     -- Some other tag bindings
     { rule = { class = "psi" },
