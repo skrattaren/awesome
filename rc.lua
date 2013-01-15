@@ -446,8 +446,7 @@ awful.rules.rules = {
     { rule = { class = "psi" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "psi", instance = "main" },
-      -- awful.client.setmaster() doesn't do the trick
-      callback = function (c) c:swap(awful.client.getmaster()) end },
+      callback = awful.client.setmaster },
     { rule = { class = "Transmission-qt" },
       properties = { tag = tags[1][8] } },
     -- Catch Conky window
