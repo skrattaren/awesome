@@ -142,8 +142,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock(" %a, %d %b | %H:%M ", 13)
 
 -- Keyboard layout widget
 kbdwidget = wibox.widget.textbox()
@@ -242,7 +240,7 @@ for s = 1, screen.count() do
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(kbdwidget)
-    right_layout:add(mytextclock)
+    right_layout:add(widgets.mytextclock)
     right_layout:add(mylayoutbox[s])
     for _, wdgt in pairs(custom_widgets) do
         right_layout:add(wdgt)
