@@ -47,20 +47,35 @@ vicious.register(cpubar, vicious.widgets.cpu, "$1", 1)
 
 -- Correct textclock, updated only when needed
 mytextclock = wibox.widget.textbox()
-local format = " %a, %d %b | %H:%M "
-mytextclock.set_time = function() mytextclock:set_markup(os.date(format)) end
-mytextclock.set_time()
-local secs = 60 - tonumber(os.date("%S"))
-mytextclock.timer = timer { timeout = secs }
-mytextclock.timer:connect_signal("timeout", function()
-                            mytextclock.set_time()
-                            mytextclock.timer:stop()
-                            mytextclock.timer = timer { timeout = 60 }
-                            mytextclock.timer:connect_signal("timeout",
-                                                        mytextclock.set_time)
-                            mytextclock.timer:start() end
-                            )
-mytextclock.timer:start()
+mytextclock.format = " %a, %d %b | %H:%M "
+
+function set_time(textclock)
+    textclock:set_markup(os.date(textclock.format))
+end
+
+function keep_adjusted(textclock)
+    local function do_reset()
+        set_time(textclock)
+        if textclock.timer then textclock.timer:stop() end
+        local secs = 60 - tonumber(os.date("%S"))
+        textclock.timer = timer { timeout = secs }
+        textclock.timer:connect_signal("timeout",
+            function()
+                textclock.timer:stop()
+                textclock.timer = timer { timeout = 60 }
+                textclock.timer:connect_signal("timeout",
+                                        function() set_time(textclock) end)
+                textclock.timer:start()
+            end )
+        textclock.timer:start()
+    end
+    do_reset()
+    textclock.reset_timer = timer { timeout = 3600 }
+    textclock.reset_timer:connect_signal("timeout", do_reset)
+    textclock.reset_timer:start()
+end
+
+keep_adjusted(mytextclock)
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
 
