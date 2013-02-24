@@ -10,10 +10,10 @@ module("widget_fun")
 
 -- Battery (based on http://awesome.naquadah.org/wiki/Gigamo_Battery_Widget)
 
-local limits = {{25, 5},
-          {12, 3},
-          { 7, 1},
-            {0}}
+local limits = { {25, 5},
+                 {12, 3},
+                 { 7, 1},
+                  {0}}
 
 function getnextlim (num)
     for ind, pair in pairs(limits) do
@@ -42,7 +42,8 @@ function batclosure ()
             prefix = "Bat:"
             if charge <= nextlim then
                 naughty.notify({title = "⚡ Lystring! ⚡",
-                                text = "Batteriet har nått låg nivå ( ⚡ "..charge.."%)!",
+                                text = "Batteriet har nått låg nivå ( ⚡ "
+                                        ..charge.."%)!",
                                 timeout = 7,
                                 position = "bottom_right",
                                 fg = beautiful.fg_focus,
