@@ -12,7 +12,7 @@ local limits = { {25, 5},
                  { 7, 1},
                   {0}}
 
-function getnextlim (num)
+local function getnextlim (num)
     for ind, pair in pairs(limits) do
         lim = pair[1]; step = pair[2]; nextlim = limits[ind+1][1] or 0
         if num > nextlim then
