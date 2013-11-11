@@ -445,6 +445,9 @@ awful.rules.rules = {
       properties = { tag = tags[1][3] } },
     { rule = { class = "psi", instance = "main" },
       callback = awful.client.setmaster },
+    { rule = { class = "Leechcraft", name = "Azoth" },
+      properties = { floating = false },
+      callback = awful.client.setmaster },
     { rule = { class = "Transmission-qt" },
       properties = { tag = tags[1][8] } },
     -- Catch Conky window
