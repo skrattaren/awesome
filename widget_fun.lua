@@ -1,5 +1,6 @@
 local naughty = require("naughty")
 local beautiful = require("beautiful")
+local math = require("math")
 local pairs = pairs
 
 module("widget_fun")
@@ -70,7 +71,7 @@ function watch_temp (thermowidget, args)
                         bg = beautiful.bg_focus
                        })
     end
-    return " "..temp.."°"
+    return " "..math.ceil(temp).."°"
 end
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
