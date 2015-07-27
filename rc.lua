@@ -536,11 +536,6 @@ client.connect_signal("manage", function (c, startup)
         title:set_align("center")
         middle_layout:add(title)
         middle_layout:buttons(buttons)
-                end),
-                awful.button({ }, 3, function()
-                    client.focus = c
-                    c:raise()
-                    awful.mouse.client.resize(c)
 
         -- Now bring it all together
         local layout = wibox.layout.align.horizontal()
