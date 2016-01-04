@@ -472,6 +472,9 @@ awful.rules.rules = {
       callback = function(c)
           c:tags({})
           clnt_table["conky"] = c end },
+    -- opaque terminals
+    { rule = { class = "URxvt" },
+      properties = { opacity = 0.7 } },
 }
 -- }}}
 
