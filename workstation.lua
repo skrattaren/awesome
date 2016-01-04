@@ -2,21 +2,21 @@
 
 tags = {}
 tags.setup = {
-    { name = "webb",    layout = layouts[8]  },
-    { name = "term",    layout = layouts[2], mwfact = 0.60 },
-    { name = "psi",     layout = layouts[3], mwfact = 0.17 },
-    { name = "verkterm",layout = layouts[4]  },
-    { name = "tekst",   layout = layouts[2], mwfact = 0.65 },
-    { name = "6",       layout = layouts[2], hide = true },
-    { name = "sieben",  layout = layouts[2]  },
-    { name = "8",       layout = layouts[4], hide = true },
-    { name = "var",     layout = layouts[1]  }
+    { name = "🕸",   layout = layouts[8]  },
+    { name = "⚙",   layout = layouts[2], mwfact = 0.60 },
+    { name = "👥",   layout = layouts[3], mwfact = 0.17 },
+    { name = "🔧",   layout = layouts[4]  },
+    { name = "🖉",   layout = layouts[2], mwfact = 0.65 },
+    { name = "6",   layout = layouts[2], hide = true },
+    { name = "♫",   layout = layouts[2]  },
+    { name = "8",   layout = layouts[4], hide = true },
+    { name = "♻",   layout = layouts[1]  }
 }
 
 tags.mods = {}
 tags.mods[2] = {
-    [1] = { name = "doc" },
-    [5] = { hide = true },
+    [1] = { name = "🎞" },
+    [5] = { name = "✉" },
     [3] = { layout = layouts[4], mwfact = 0.5 },
 }
 
