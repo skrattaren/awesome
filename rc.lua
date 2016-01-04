@@ -11,9 +11,6 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
-naughty.config.defaults.position = "bottom_right"
-naughty.config.defaults.opacity = 0.8
-
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -53,6 +50,10 @@ do
         beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
     end
 end
+
+naughty.config.defaults.position = "top_right"
+naughty.config.defaults.opacity = 0.8
+naughty.config.defaults.font = beautiful.naughty_font or beautiful.font
 
 -- Create a table to store specific clients
 clnt_table = {}
