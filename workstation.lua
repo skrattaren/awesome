@@ -3,10 +3,10 @@
 tags = {}
 tags.setup = {
     { name = "🕸",   layout = layouts[8]  },
-    { name = "⚙",   layout = layouts[2], mwfact = 0.60 },
+    { name = "⚙",   layout = layouts[2]  },
     { name = "👥",   layout = layouts[3], mwfact = 0.17 },
-    { name = "🔧",   layout = layouts[4]  },
-    { name = "🖉",   layout = layouts[2], mwfact = 0.65 },
+    { name = "🔧",   layout = layouts[2]  },
+    { name = "🖉",   layout = layouts[4], mwfact = 0.69 },
     { name = "6",   layout = layouts[2], hide = true },
     { name = "♫",   layout = layouts[2]  },
     { name = "8",   layout = layouts[4], hide = true },

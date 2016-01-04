@@ -446,6 +446,7 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
+                     -- opacity = focus and 1 or 0.8,
                      size_hints_honor = false } },
     { rule_any = { class = { "mplayer2", "MPlayer", "mpv" } },
       properties = { floating = true } },
