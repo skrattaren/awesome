@@ -264,6 +264,21 @@ root.buttons(awful.util.table.join(
 ))
 -- }}}
 
+function histoggle ()
+    -- focus previous client on tag _or_ next one
+    if not client.focus then return end
+    local screen = client.focus.screen
+    local prev_exists = awful.client.focus.history.get(screen, 1)
+    if prev_exists then
+        awful.client.focus.history.previous()
+    else
+        awful.client.focus.byidx(1)
+    end
+    if client.focus then
+        client.focus:raise()
+    end
+end
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
@@ -289,20 +304,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ "Mod1",           }, "Tab",
-        function ()
-            if not client.focus then return end
-            local screen = client.focus.screen
-            local prev_exists = awful.client.focus.history.get(screen, 1)
-            if prev_exists then
-                awful.client.focus.history.previous()
-            else
-                awful.client.focus.byidx(1)
-            end
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    awful.key({ "Mod1",           }, "Tab", histoggle),
+    awful.key({ modkey,           }, "`", histoggle),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
