@@ -245,8 +245,10 @@ for s = 1, screen.count() do
     right_layout:add(kbdwidget)
     right_layout:add(widgets.mytextclock)
     right_layout:add(mylayoutbox[s])
-    for _, wdgt in pairs(custom_widgets) do
-        right_layout:add(wdgt)
+    if s == 1 then
+        for _, wdgt in pairs(custom_widgets) do
+            right_layout:add(wdgt)
+        end
     end
 
     -- Now bring it all together (with the tasklist in the middle)
