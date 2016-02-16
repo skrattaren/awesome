@@ -473,9 +473,6 @@ awful.rules.rules = {
       callback = function(c)
           c:tags({})
           clnt_table["conky"] = c end },
-    -- opaque terminals
-    { rule = { class = "URxvt" },
-      properties = { opacity = 0.7 } },
 }
 -- }}}
 
@@ -557,10 +554,8 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus
-                                           c.opacity = c.opacity * 1.25 end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal
-                                             c.opacity = c.opacity * 0.8 end)
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 dbus.request_name("session", "ru.gentoo.kbdd")
 dbus.add_match("session", "interface='ru.gentoo.kbdd',member='layoutChanged'")
