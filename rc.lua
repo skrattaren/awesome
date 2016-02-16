@@ -308,7 +308,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ "Mod1",           }, "Tab", histoggle),
-    awful.key({ modkey,           }, "`", histoggle),
+    awful.key({ "Mod1",           }, "`", histoggle),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
