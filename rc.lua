@@ -457,22 +457,25 @@ awful.rules.rules = {
     -- Set browsers to always map on tags number 1 of screen 1.
     { rule_any = { class = { "Opera", "luakit", "Firefox" } },
       properties = { tag = tags[1][1] } },
-    -- Some other tag bindings
+    -- Leechcraftz
+    { rule = { instance = "leechcraft" },
+      properties = { tag = tags[1][3] } },
+    { rule = { class = "Leechcraft", name = "Azoth" },
+      properties = { floating = false },
+      callback = awful.client.setmaster },
+    -- Good night, sweet Psi
     { rule = { class = "psi" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "psi", instance = "main" },
       callback = awful.client.setmaster },
-    { rule = { class = "Leechcraft", name = "Azoth" },
-      properties = { floating = false },
-      callback = awful.client.setmaster },
-    { rule = { class = "Transmission-qt" },
-      properties = { tag = tags[1][8] } },
     -- Catch Conky window
     { rule = { class = "Conky" },
       properties = { floating = true, hidden = true, ontop = true },
       callback = function(c)
           c:tags({})
           clnt_table["conky"] = c end },
+    { rule = { class = "Transmission-qt" },
+      properties = { tag = tags[1][8] } },
 }
 -- }}}
 

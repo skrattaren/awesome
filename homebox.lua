@@ -25,7 +25,7 @@ tags.mods[2] = {
 -- table definition
 add_rules = [[
     add_rules = {
-    { rule = { instance = "groupchat_tabs" },
+    { rule = { class = "LeechCraft.Azoth.MUCTab" },
       properties = { tag = tags[2][3] } },
 }
 ]]
