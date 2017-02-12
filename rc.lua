@@ -267,7 +267,7 @@ awful.screen.connect_for_each_screen(function(s)
                 kbdwidget,
                 -- mykeyboardlayout,
                 wibox.widget.systray(),
-                mytextclock,
+                widgets.mytextclock,
                 s.mylayoutbox,
             },
             custom_widgets
