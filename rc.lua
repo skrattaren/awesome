@@ -140,7 +140,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Keyboard layout widget
 kbdwidget = wibox.widget.textbox()
-kbdwidget.forced_width = 37
+kbdwidget.forced_width = 29
 kbdwidget.align = "center"
 kbdwidget.border_color = beautiful.fg_normal
 kbdwidget.border_width = 1
