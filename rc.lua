@@ -140,11 +140,10 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Keyboard layout widget
 kbdwidget = wibox.widget.textbox()
--- Set width=29
-kbdwidget.fit = function(widget, width, height)
-    local _, h = wibox.widget.textbox.fit(widget, width, height)
-    return 29, h
-end
+kbdwidget.forced_width = 37
+kbdwidget.align = "center"
+kbdwidget.border_color = beautiful.fg_normal
+kbdwidget.border_width = 1
 
 -- Set border
 kbdwidget.draw = function(kbdwidget, wibox_, cr, width, height)
@@ -155,7 +154,6 @@ kbdwidget.draw = function(kbdwidget, wibox_, cr, width, height)
 end
 
 kbdwidget:set_text("Eng")
-kbdwidget:set_align("center")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = awful.util.table.join(
@@ -263,13 +261,17 @@ awful.screen.connect_for_each_screen(function(s)
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
-        },
+        awful.util.table.join(
+            { -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                kbdwidget,
+                -- mykeyboardlayout,
+                wibox.widget.systray(),
+                mytextclock,
+                s.mylayoutbox,
+            },
+            custom_widgets
+        )
     }
 end)
 -- }}}
