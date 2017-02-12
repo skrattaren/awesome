@@ -1,5 +1,4 @@
 local wibox = require("wibox")
-local timer = timer
 local beautiful = require("beautiful")
 local awful = require("awful")
 local gears = require("gears")
@@ -34,7 +33,7 @@ vicious.register(thermowidget, vicious.widgets.thermal, widget_fun.watch_temp,
                     11, "thermal_zone0")
 
 -- CPU load widget
-cpubar = awful.widget.progressbar()
+cpubar = wibox.widget.progressbar()
 local colour1, colour2
 colour1 = beautiful.gradient_1 or "#4f7f4fff"
 colour2 = beautiful.gradient_2 or "#d3d3d3ff"
@@ -58,11 +57,11 @@ function keep_adjusted(textclock)
         set_time(textclock)
         if textclock.timer then textclock.timer:stop() end
         local secs = 60 - tonumber(os.date("%S"))
-        textclock.timer = timer { timeout = secs }
+        textclock.timer = gears.timer { timeout = secs }
         textclock.timer:connect_signal("timeout",
             function()
                 textclock.timer:stop()
-                textclock.timer = timer { timeout = 60 }
+                textclock.timer = gears.timer { timeout = 60 }
                 textclock.timer:connect_signal("timeout",
                                         function() set_time(textclock) end)
                 textclock.timer:start()
@@ -70,7 +69,7 @@ function keep_adjusted(textclock)
         textclock.timer:start()
     end
     do_reset()
-    textclock.reset_timer = timer { timeout = 3600 }
+    textclock.reset_timer = gears.timer { timeout = 3600 }
     textclock.reset_timer:connect_signal("timeout", do_reset)
     textclock.reset_timer:start()
 end

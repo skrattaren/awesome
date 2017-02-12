@@ -1,23 +1,25 @@
+local awful = require("awful")
 -- Tags
 
 tags = {}
+local layouts = awful.layout.layouts
 tags.setup = {
-    { name = "🕸",   layout = layouts[8]  },
-    { name = "⚙",   layout = layouts[2]  },
-    { name = "👥",   layout = layouts[3], mwfact = 0.17 },
-    { name = "🔧",   layout = layouts[2]  },
-    { name = "🖉",   layout = layouts[4], mwfact = 0.69 },
-    { name = "6",   layout = layouts[2], hide = true },
-    { name = "♫",   layout = layouts[2]  },
-    { name = "8",   layout = layouts[4], hide = true },
-    { name = "♻",   layout = layouts[1]  }
+    { name = "🕸",  properties = { layout = layouts[8]  }},
+    { name = "⚙",  properties = { layout = layouts[2]  }},
+    { name = "👥", properties = { layout = layouts[3], mwfact = 0.17 }},
+    { name = "🔧", properties = { layout = layouts[2]  }},
+    { name = "🖉",  properties = { layout = layouts[4], mwfact = 0.69 }},
+    { name = "6",  properties = { layout = layouts[2], hide = true }},
+    { name = "♫",  properties = { layout = layouts[2]  }},
+    { name = "8",  properties = { layout = layouts[4], hide = true }},
+    { name = "♻",  properties = { layout = layouts[1]  }}
 }
 
 tags.mods = {}
 tags.mods[2] = {
     [1] = { name = "🎞" },
     [5] = { name = "✉" },
-    [3] = { layout = layouts[4], mwfact = 0.5 },
+    [3] = { properties = { layout = layouts[4], mwfact = 0.5 }},
 }
 
 -- Rules (FIXME)
