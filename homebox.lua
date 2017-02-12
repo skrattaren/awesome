@@ -1,25 +1,28 @@
 local awful = require("awful")
--- Tags
 
+-- Tags
 tags = {}
-local layouts = awful.layout.layouts
+local layout_suit = awful.layout.suit
 tags.setup = {
-    { name = "🕸",  properties = { layout = layouts[8]  }},
-    { name = "⚙",  properties = { layout = layouts[2]  }},
-    { name = "👥", properties = { layout = layouts[3], master_width_factor = 0.17 }},
-    { name = "🔧", properties = { layout = layouts[2]  }},
-    { name = "🖉",  properties = { layout = layouts[4], master_width_factor = 0.69 }},
-    { name = "6",  properties = { layout = layouts[2], hide = true }},
-    { name = "♫",  properties = { layout = layouts[2]  }},
-    { name = "8",  properties = { layout = layouts[4], hide = true }},
-    { name = "♻",  properties = { layout = layouts[1]  }}
+    { name = "🕸", properties = { layout = layout_suit.max  }},
+    { name = "⚙", properties = { layout = layout_suit.tile  }},
+    { name = "👥", properties = { layout = layout_suit.tile.left,
+                                 master_width_factor = 0.17 }},
+    { name = "🔧", properties = { layout = layout_suit.tile  }},
+    { name = "🖉", properties = { layout = layout_suit.tile.bottom,
+                                 master_width_factor = 0.69 }},
+    { name = "6", properties = { layout = layout_suit.tile, hide = true }},
+    { name = "♫", properties = { layout = layout_suit.tile  }},
+    { name = "8", properties = { layout = layout_suit.tile.bottom, hide = true }},
+    { name = "♻", properties = { layout = layout_suit.floating  }}
 }
 
 tags.mods = {}
 tags.mods[2] = {
     [1] = { name = "🎞" },
     [5] = { name = "✉" },
-    [3] = { properties = { layout = layouts[4], master_width_factor = 0.5 }},
+    [3] = { properties = { layout = layout_suit.tile.bottom,
+                           master_width_factor = 0.5 }},
 }
 
 -- Rules (FIXME)

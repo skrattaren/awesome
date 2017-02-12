@@ -1,16 +1,21 @@
+local awful = require("awful")
+
 -- Tags
 tags = {}
+local layout_suit = awful.layout.suit
 tags.mods = {}
 tags.setup = {
-    { name = "🕸",   layout = layouts[8]  },
-    { name = "⚙",   layout = layouts[2]  },
-    { name = "👥",   layout = layouts[2], ncol = 2, master_width_factor = 0.15 },
-    { name = "🔧",   layout = layouts[2]  },
-    { name = "🖉",   layout = layouts[4], master_width_factor = 0.6 },
-    { name = "6",   layout = layouts[2], hide = true },
-    { name = "♫",   layout = layouts[2]  },
-    { name = "8",   layout = layouts[4], hide = true },
-    { name = "♻",   layout = layouts[1]  }
+    { name = "🕸", properties = { layout = layout_suit.max  }},
+    { name = "⚙", properties = { layout = layout_suit.tile  }},
+    { name = "👥", properties = { layout = layout_suit.tile,
+                                 ncol = 2, master_width_factor = 0.15 }},
+    { name = "🔧", properties = { layout = layout_suit.tile  }},
+    { name = "🖉", properties = { layout = layout_suit.tile.bottom,
+                                 master_width_factor = 0.6 }},
+    { name = "6", properties = { layout = layout_suit.tile, hide = true }},
+    { name = "♫", properties = { layout = layout_suit.tile  }},
+    { name = "8", properties = { layout = layout_suit.tile.bottom, hide = true }},
+    { name = "♻", properties = { layout = layout_suit.floating  }}
 }
 
 --[[
