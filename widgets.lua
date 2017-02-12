@@ -42,7 +42,7 @@ gradient_colour = {type="linear", from={0.5, 0.5}, to={100, 20},
 cpubar.color = gradient_colour
 cpubar.background_color = beautiful.bg_widget
 cpubar.ticks = true
-cpubar.forced_width = 200
+cpubar.forced_width = 150
 vicious.register(cpubar, vicious.widgets.cpu, "$1", 1)
 
 -- Correct textclock, updated only when needed
