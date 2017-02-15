@@ -557,9 +557,11 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
     -- Add titlebars to normal clients and dialogs
+    --[[
     { rule_any = {type = { "dialog" }
       }, properties = { titlebars_enabled = true }
     },
+    --]]
     -- Set browsers to always map on tags number 1 of screen 1.
     { rule_any = { class = { "Opera", "luakit", "Firefox" } },
       properties = { tag = tags[1][1] } },
