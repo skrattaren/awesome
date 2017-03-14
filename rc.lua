@@ -567,10 +567,11 @@ awful.rules.rules = {
       properties = { tag = tags[1][1] } },
     -- Leechcraftz
     { rule = { instance = "leechcraft" },
-      properties = { tag = tags[1][3] } },
-    { rule = { class = "Leechcraft", name = "Azoth" },
-      properties = { floating = false },
-      callback = awful.client.setmaster },
+      except = { name = "Leechcraft" },
+      properties = { tag = tags[1][3], floating = false } },
+    { rule = { class = "Leechcraft" },
+      except = { name = "Azoth" },
+      callback = awful.client.setslave },
     -- Catch Conky window
     { rule = { class = "Conky" },
       properties = { floating = true, hidden = true, ontop = true },
