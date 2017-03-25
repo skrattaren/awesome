@@ -567,7 +567,7 @@ awful.rules.rules = {
       properties = { tag = tags[1][1] } },
     -- Leechcraftz
     { rule = { instance = "leechcraft" },
-      except = { name = "Leechcraft" },
+      except_any = { name = { "Leechcraft" , "Users list" } },
       properties = { tag = tags[1][3], floating = false } },
     { rule = { class = "Leechcraft" },
       except = { name = "Azoth" },
