@@ -578,7 +578,7 @@ awful.rules.rules = {
       callback = function(c)
           c:tags({})
           clnt_table["conky"] = c end },
-    { rule = { class = "Transmission-qt" },
+    { rule = { class = "transmission" },
       properties = { tag = tags[1][8] } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
