@@ -10,8 +10,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
--- Enable VIM help for hotkeys widget when client with matching name is opened:
-require("awful.hotkeys_popup.keys.vim")
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -42,14 +43,14 @@ end
 -- Themes define colours, icons, font and wallpapers.
 do
     local user_theme, ut
-    user_theme = awful.util.getdir("config") .. "/theme/theme.lua"
+    user_theme = gears.filesystem.get_configuration_dir() .. "/theme/theme.lua"
     ut = io.open(user_theme)
     if ut then
         io.close(ut)
         beautiful.init(user_theme)
     else
         print("Theme doesn't exist, falling back to zenburn")
-        beautiful.init(awful.util.get_themes_dir() .. "zenburn/theme.lua")
+        beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
     end
 end
 
@@ -236,7 +237,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contains an icon indicating which layout we're using.
+    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
