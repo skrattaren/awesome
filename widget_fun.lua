@@ -35,7 +35,7 @@ function batclosure ()
         local prefix = "⚡"
         local state, charge = args[1], args[2]
         if not charge then return end
-        if state == "-" then
+        if state == "−" then
             dirsign = "↓"
             prefix = "Bat:"
             if charge <= nextlim then
