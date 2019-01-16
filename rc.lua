@@ -690,4 +690,8 @@ dbus.connect_signal("ru.gentoo.kbdd", function(...)
 )
 -- }}}
 
+--- Final touches (hacks)
+-- Switch to screen 1
+awful.screen.focus(1)
+
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
