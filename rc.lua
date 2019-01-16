@@ -62,7 +62,7 @@ naughty.config.defaults.font = beautiful.naughty_font or beautiful.font
 clnt_table = {}
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
