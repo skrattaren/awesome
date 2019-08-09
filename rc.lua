@@ -586,8 +586,8 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = true }
     },
     --]]
-    -- Set browsers to always map on tags number 1 of screen 1.
-    { rule_any = { class = { "Opera", "luakit", "Firefox" } },
+    -- Set browser to always map on tags number 1 of screen 1.
+    { rule = { class = "Firefox", instance = "Navigator" },
       properties = { tag = tags[1][1] } },
     -- Leechcraftz
     { rule = { instance = "leechcraft" },
